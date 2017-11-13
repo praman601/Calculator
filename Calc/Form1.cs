@@ -30,7 +30,7 @@ namespace Calc
         
         private void button_Click(object sender, EventArgs e)
         {
-            if(textBox1.Text=="0")
+            if((textBox1.Text=="0") || isOperationPerformed)
             {
                 textBox1.Clear();
                
@@ -46,6 +46,9 @@ namespace Calc
             Button button = (Button)sender;
             operationPerformed = button.Text;
             resultValue = Double.Parse(textBox1.Text);
+            label.Text = resultValue + " " + operationPerformed;
+
+
             isOperationPerformed = true;
         }
 
@@ -70,15 +73,15 @@ namespace Calc
                      break;
 
                 case "-":
-                    textBox1.Text = (resultValue + Double.Parse(textBox1.Text)).ToString();
+                    textBox1.Text = (resultValue - Double.Parse(textBox1.Text)).ToString();
                     break;
 
                 case "*":
-                    textBox1.Text = (resultValue + Double.Parse(textBox1.Text)).ToString();
+                    textBox1.Text = (resultValue * Double.Parse(textBox1.Text)).ToString();
                     break;
 
                 case "/":
-                    textBox1.Text = (resultValue + Double.Parse(textBox1.Text)).ToString();
+                    textBox1.Text = (resultValue / Double.Parse(textBox1.Text)).ToString();
                     break;
 
                 default:
@@ -89,3 +92,4 @@ namespace Calc
         }
     }
 }
+ 
